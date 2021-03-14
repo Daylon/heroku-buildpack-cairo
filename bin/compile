@@ -27,7 +27,7 @@ function vendor() {
 
   mkdir -p $path
 
-  curl $binary -s -o - | tar xfMz -
+  curl $binary -s -o - | tar xfz -
 
   if [ -d "$path/bin" ]; then
     export PATH=$path/bin:$PATH
