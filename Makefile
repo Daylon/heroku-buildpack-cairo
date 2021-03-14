@@ -48,35 +48,35 @@ clean:
 
 src/cairo.tar.xz:
 	mkdir -p $$(dirname $@)
-	curl -sL http://cairographics.org/releases/cairo-1.14.6.tar.xz -o $@
+	curl -sL https://www.cairographics.org/releases/cairo-5c-1.20.tar.gz -o $@
 
-src/fontconfig.tar.bz2:
+src/fontconfig.tar.xz:
 	mkdir -p $$(dirname $@)
-	curl -sL http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.12.1.tar.bz2 -o $@
+	curl -sL https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.13.93.tar.xz -o $@
 
 src/freetype.tar.bz2:
 	mkdir -p $$(dirname $@)
-	curl -sL http://download.savannah.gnu.org/releases/freetype/freetype-2.6.5.tar.bz2 -o $@
+	curl -sL http://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.bz2 -o $@
 
 src/giflib.tar.bz2:
 	mkdir -p $$(dirname $@)
-	curl -sL "http://downloads.sourceforge.net/project/giflib/giflib-4.x/giflib-4.2.3.tar.bz2?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fgiflib%2F&ts=1384049147&use_mirror=softlayer-dal2" -o $@
+	curl -sL "https://downloads.sourceforge.net/project/giflib/giflib-5.x/giflib-5.0.2.tar.bz2?ts=1615733507&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fgiflib%2Ffiles%2Fgiflib-5.x%2Fgiflib-5.0.2.tar.bz2%2Fdownload" -o $@
 
-src/harfbuzz.tar.bz2:
+src/harfbuzz.tar.xz:
 	mkdir -p $$(dirname $@)
-	curl -sL http://www.freedesktop.org/software/harfbuzz/release/harfbuzz-1.3.0.tar.bz2 -o $@
+	curl -sL https://www.freedesktop.org/software/harfbuzz/release/harfbuzz-2.6.7.tar.xz -o $@
 
-src/pango.tar.xz:
+src/pango.tar.bz2:
 	mkdir -p $$(dirname $@)
-	curl -sL http://ftp.gnome.org/pub/GNOME/sources/pango/1.40/pango-1.40.1.tar.xz -o $@
+	curl -sL https://download.gnome.org/sources/pango/1.9/pango-1.9.1.tar.bz2 -o $@
 
-src/librsvg.tar.xz:
+src/librsvg.tar.bz2:
 	mkdir -p $$(dirname $@)
-	curl -sL https://download.gnome.org/sources/librsvg/2.41/librsvg-2.41.1.tar.xz -o $@
+	curl -sL https://download.gnome.org/sources/librsvg/2.9/librsvg-2.9.5.tar.bz2 -o $@
 
 src/pixman.tar.gz:
 	mkdir -p $$(dirname $@)
-	curl -sL http://cairographics.org/releases/pixman-0.34.0.tar.gz -o $@
+	curl -sL https://www.cairographics.org/releases/pixman-0.40.0.tar.gz -o $@
 
 .PHONY: heroku-20-stack
 
@@ -90,7 +90,7 @@ heroku-20-stack/heroku-20.sh:
 
 .PHONY: cairo-heroku-20
 
-cairo-heroku-20: heroku-20-stack cairo-heroku-20/pixman.tar.gz cairo-heroku-20/freetype.tar.bz2 cairo-heroku-20/giflib.tar.bz2 cairo-heroku-20/cairo.tar.xz cairo-heroku-20/pango.tar.xz  cairo-heroku-20/librsvg.tar.xz cairo-heroku-20/fontconfig.tar.bz2 cairo-heroku-20/harfbuzz.tar.bz2
+cairo-heroku-20: heroku-20-stack cairo-heroku-20/pixman.tar.gz cairo-heroku-20/freetype.tar.bz2 cairo-heroku-20/giflib.tar.bz2 cairo-heroku-20/cairo.tar.xz cairo-heroku-20/pango.tar.bz2  cairo-heroku-20/librsvg.tar.bz2 cairo-heroku-20/fontconfig.tar.xz cairo-heroku-20/harfbuzz.tar.xz
 	docker build --rm -t daylon/$@ $@
 	-docker rm $@
 	docker run --name $@ daylon/$@ /bin/echo $@
@@ -98,7 +98,7 @@ cairo-heroku-20: heroku-20-stack cairo-heroku-20/pixman.tar.gz cairo-heroku-20/f
 cairo-heroku-20/cairo.tar.xz: src/cairo.tar.xz
 	ln -f $< $@
 
-cairo-heroku-20/fontconfig.tar.bz2: src/fontconfig.tar.bz2
+cairo-heroku-20/fontconfig.tar.xz: src/fontconfig.tar.xz
 	ln -f $< $@
 
 cairo-heroku-20/freetype.tar.bz2: src/freetype.tar.bz2
@@ -107,13 +107,13 @@ cairo-heroku-20/freetype.tar.bz2: src/freetype.tar.bz2
 cairo-heroku-20/giflib.tar.bz2: src/giflib.tar.bz2
 	ln -f $< $@
 
-cairo-heroku-20/harfbuzz.tar.bz2: src/harfbuzz.tar.bz2
+cairo-heroku-20/harfbuzz.tar.xz: src/harfbuzz.tar.xz
 	ln -f $< $@
 
-cairo-heroku-20/pango.tar.xz: src/pango.tar.xz
+cairo-heroku-20/pango.tar.bz2: src/pango.tar.bz2
 	ln -f $< $@
 
-cairo-heroku-20/librsvg.tar.xz: src/librsvg.tar.xz
+cairo-heroku-20/librsvg.tar.bz2: src/librsvg.tar.bz2
 	ln -f $< $@
 
 cairo-heroku-20/pixman.tar.gz: src/pixman.tar.gz
