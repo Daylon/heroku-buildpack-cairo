@@ -46,7 +46,7 @@ clean:
 	rm -rf src/ cedar*/*.sh dist/ cairo-cedar*/*.tar.*
 	-docker rm cairo-heroku-20
 
-src/cairo.tar.xz:
+src/cairo.tar.gz:
 	mkdir -p $$(dirname $@)
 	curl -sL https://www.cairographics.org/releases/cairo-5c-1.20.tar.gz -o $@
 
@@ -90,12 +90,12 @@ heroku-20-stack/heroku-20.sh:
 
 .PHONY: cairo-heroku-20
 
-cairo-heroku-20: heroku-20-stack cairo-heroku-20/pixman.tar.gz cairo-heroku-20/freetype.tar.bz2 cairo-heroku-20/giflib.tar.bz2 cairo-heroku-20/cairo.tar.xz cairo-heroku-20/pango.tar.bz2  cairo-heroku-20/librsvg.tar.bz2 cairo-heroku-20/fontconfig.tar.xz cairo-heroku-20/harfbuzz.tar.xz
+cairo-heroku-20: heroku-20-stack cairo-heroku-20/pixman.tar.gz cairo-heroku-20/freetype.tar.bz2 cairo-heroku-20/giflib.tar.bz2 cairo-heroku-20/cairo.tar.gz cairo-heroku-20/pango.tar.bz2  cairo-heroku-20/librsvg.tar.bz2 cairo-heroku-20/fontconfig.tar.xz cairo-heroku-20/harfbuzz.tar.xz
 	docker build --rm -t daylon/$@ $@
 	-docker rm $@
 	docker run --name $@ daylon/$@ /bin/echo $@
 
-cairo-heroku-20/cairo.tar.xz: src/cairo.tar.xz
+cairo-heroku-20/cairo.tar.gz: src/cairo.tar.gz
 	ln -f $< $@
 
 cairo-heroku-20/fontconfig.tar.xz: src/fontconfig.tar.xz
