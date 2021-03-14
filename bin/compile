@@ -47,14 +47,14 @@ function vendor() {
 }
 
 echo "-----> Vendoring binaries"
-vendor "https://s3.amazonaws.com/mojodna-heroku/$STACK/cairo-1.14.6-1.tar.gz"  "$BUILD_DIR/vendor/cairo"
-vendor "https://s3.amazonaws.com/mojodna-heroku/$STACK/freetype-2.6.5-1.tar.gz" "$BUILD_DIR/vendor/freetype"
-vendor "https://s3.amazonaws.com/mojodna-heroku/$STACK/giflib-4.2.3-3.tar.gz"   "$BUILD_DIR/vendor/giflib"
-vendor "https://s3.amazonaws.com/mojodna-heroku/$STACK/pixman-0.34.0-1.tar.gz"  "$BUILD_DIR/vendor/pixman"
-vendor "https://s3.amazonaws.com/mojodna-heroku/$STACK/pango-1.40.1-1.tar.gz"  "$BUILD_DIR/vendor/pango"
-vendor "https://download.gnome.org/sources/librsvg/2.41/librsvg-2.41.1.tar.xz"  "$BUILD_DIR/vendor/librsvg"
-vendor "https://s3.amazonaws.com/mojodna-heroku/$STACK/harfbuzz-1.3.0-1.tar.gz"  "$BUILD_DIR/vendor/harfbuzz"
-vendor "https://s3.amazonaws.com/mojodna-heroku/$STACK/fontconfig-2.12.1-1.tar.gz"  "$BUILD_DIR/vendor/fontconfig"
+vendor "https://www.cairographics.org/releases/cairo-5c-1.20.tar.gz"  "$BUILD_DIR/vendor/cairo"
+vendor "http://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.bz2" "$BUILD_DIR/vendor/freetype"
+vendor "https://downloads.sourceforge.net/project/giflib/giflib-5.x/giflib-5.0.2.tar.bz2?ts=1615733507&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fgiflib%2Ffiles%2Fgiflib-5.x%2Fgiflib-5.0.2.tar.bz2%2Fdownload"   "$BUILD_DIR/vendor/giflib"
+vendor "https://www.cairographics.org/releases/pixman-0.40.0.tar.gz"  "$BUILD_DIR/vendor/pixman"
+vendor "https://download.gnome.org/sources/pango/1.9/pango-1.9.1.tar.bz2"  "$BUILD_DIR/vendor/pango"
+vendor "https://download.gnome.org/sources/librsvg/2.9/librsvg-2.9.5.tar.bz2"  "$BUILD_DIR/vendor/librsvg"
+vendor "https://www.freedesktop.org/software/harfbuzz/release/harfbuzz-2.6.7.tar.xz"  "$BUILD_DIR/vendor/harfbuzz"
+vendor "https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.13.93.tar.xz"  "$BUILD_DIR/vendor/fontconfig"
 
 echo "-----> Tweaking Cairo, FreeType, and Pixman include paths"
 
